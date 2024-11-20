@@ -1,0 +1,20 @@
+
+{% load static %}
+{% extends "base.html" %}
+    {%  block contnet %}
+{%  for r in rooms %}
+{{r}}
+<br/>
+{% endfor %}
+
+<a href="{%  url 'welcome' %}"> Strona Glowna</a>
+{% endblock %}
+{%  block title %} Witamy {% endblock %}
+<link rel="stylesheet" href="{% static 'website/style.css' %}"/>
+<body>
+    {% for r in rooms %}
+    {{r.id}} pokój {{name}} o numerze {{r.room_number}} na {{r.floor}} pietrze
+    <br/>
+    {% endfor %}
+
+</body>

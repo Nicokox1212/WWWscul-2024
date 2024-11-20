@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{% static 'website/style.css' %}"/>
+{% load static %}
+{% extends "base.html" %}
+{%  block title %} Szczegoly spotkania:{{ meeting.title }} {% endblock %}
+    {% block contnet %}
+
+<h1>{{meeting.title}}</h1>
+<p>
+    Spotkanie na {{ meeting.date }}, o
+    {{ meeting.start_time }}.
+</p>
+<a href="{% url 'welcome' %}"> Strona glowna </a>
+<li>
+    <a href="{% url 'rooms' %}"> Zobacz opis pokoi</a>
+</li>
+
+{%  endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{%  block title %} Witamy {% endblock %}
+    {% block contnet %}
+
+{% for meeting in meetings %}
+Numer spotkania {{ meeting.id }}
+tytuł {{ meeting.title }}
+<a href="{%  url 'detail' meeting.id %}"> {{ meeting.title }}</a>
+
+<br/>
+
+{%  endfor %}
+<a href="{%  url 'rooms' %}"> Zobacz opis pokoi </a>
+<br/>
+<img src="{% static 'website/calendar.png' %}"/>
+    {% endblock %}
+
+<link rel="stylesheet" href="{% static 'website/style.css' %}"/>
+<p>Liczba spotkań {{a}}</p>
+
+<ol>
+{% for meeting in meetings %}
+<li>
+    <a href="{% url 'detail' meeting.id %}"> {{ meeting.title }}</a>
+    
+</li>
+{% endfor %}
+</ol>
+
+
