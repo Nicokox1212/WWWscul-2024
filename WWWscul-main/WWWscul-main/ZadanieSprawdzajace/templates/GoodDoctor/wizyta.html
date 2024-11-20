@@ -1,0 +1,14 @@
+<h1>Good doctor</h1>
+<p>Masz umówione {{ num_wizyt }} wizyty</p>
+<ul>
+  {% for wizyty in all_wizyty %}
+    <a href="{% url "details" wizyty.id %}">
+      <li>{{ wizyty.date }} {{ wizyty.pacjent.nazwisko }}</li>
+    </a>
+  {% empty %}
+  <li>Brak Pacjentów.</li>
+  {% endfor %}
+</ul>
+<a href="{% url "pacjenci" %}">
+    <h2>Lista Twoich pacjentów</h2>
+</a>
