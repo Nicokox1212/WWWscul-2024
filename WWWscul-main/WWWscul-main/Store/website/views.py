@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from website.models import Meeting
 from django.shortcuts import render, get_object_or_404
-from .models import Meeting
+from .models import Meeting , Room
 # Create your views here.
 
 
@@ -26,5 +26,5 @@ def detail(request, id):
     return render(request, "website/detail.html",{"meeting": meeting})
 
 def rooms_list(request):
-    room=Room.objects.all()
-    return render(request, "website/rooms_list.html",{"rooms": room})
+    rooms = Room.objects.all()
+    return render(request, "website/rooms_list.html",{"rooms": rooms})

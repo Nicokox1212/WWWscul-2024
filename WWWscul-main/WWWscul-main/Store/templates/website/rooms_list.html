@@ -1,20 +1,27 @@
+{% extends 'website/base.html' %}
 
-{% load static %}
-{% extends "base.html" %}
-    {%  block contnet %}
-{%  for r in rooms %}
-{{r}}
-<br/>
-{% endfor %}
+{% block title %}Rooms Page{% endblock %}
 
-<a href="{%  url 'welcome' %}"> Strona Glowna</a>
-{% endblock %}
-{%  block title %} Witamy {% endblock %}
-<link rel="stylesheet" href="{% static 'website/style.css' %}"/>
-<body>
+{% block content %}
+
+<h1 class="text-5xl text-center my-4">Pokoje</h1>
+
+<h3 class="text-gray-600">Liczba pokoi: {{ rooms.count }}</h3>
+
+<ul class="bg-white shadow rounded-lg divide-y divide-gray-200 mt-4">
     {% for r in rooms %}
-    {{r.id}} pokój {{name}} o numerze {{r.room_number}} na {{r.floor}} pietrze
-    <br/>
+        <li class="px-4 py-2">
+            {{ r.id }} pokój {{ r.name }} o numerze {{ r.room_number }} na {{ r.floor }} piętrze
+        </li>
+    {% empty %}
+        <li class="px-4 py-2 text-gray-500">Brak dostępnych pokoi.</li>
     {% endfor %}
+</ul>
 
-</body>
+<div class="bg-white rounded shadow mt-4">
+    <div class="p-4">
+        <a href="{% url 'welcome' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Powrót</a>
+    </div>
+</div>
+{% endblock %}
+{#// Copyright (c) 2024 Nicola Allocca all rights reserved.#}

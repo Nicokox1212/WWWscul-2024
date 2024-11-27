@@ -1,17 +1,20 @@
-<link rel="stylesheet" href="{% static 'website/style.css' %}"/>
-{% load static %}
-{% extends "base.html" %}
-{%  block title %} Szczegoly spotkania:{{ meeting.title }} {% endblock %}
-    {% block contnet %}
+{% extends 'website/base.html' %}
 
-<h1>{{meeting.title}}</h1>
-<p>
-    Spotkanie na {{ meeting.date }}, o
-    {{ meeting.start_time }}.
-</p>
-<a href="{% url 'welcome' %}"> Strona glowna </a>
-<li>
-    <a href="{% url 'rooms' %}"> Zobacz opis pokoi</a>
-</li>
+{% block title %}Detail Page{% endblock %}
 
-{%  endblock %}
+{% block content %}
+
+<h1 class="text-5xl text-center my-4">Szczegóły spotkania</h1>
+<div class="bg-white rounded border mb-4">
+    <div class="p-5">
+        <p class="text-base text-gray-700">{{ meeting }}</p>
+    </div>
+</div>
+<div class="bg-white rounded border">
+    <div class="p-5">
+        <a href="{% url 'welcome' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Powrót</a>
+    </div>
+</div>
+{% endblock %}
+
+{#// Copyright (c) 2024 Nicola Allocca all rights reserved.#}

@@ -1,31 +1,35 @@
-{% extends "base.html" %}
-{% load static %}
-{%  block title %} Witamy {% endblock %}
-    {% block contnet %}
+{% extends 'website/base.html' %}
 
-{% for meeting in meetings %}
-Numer spotkania {{ meeting.id }}
-tytuł {{ meeting.title }}
-<a href="{%  url 'detail' meeting.id %}"> {{ meeting.title }}</a>
+{% block title %}Welcome Page{% endblock %}
 
-<br/>
+{% block content %}
 
-{%  endfor %}
-<a href="{%  url 'rooms' %}"> Zobacz opis pokoi </a>
-<br/>
-<img src="{% static 'website/calendar.png' %}"/>
-    {% endblock %}
+<h1 class="text-5xl text-center my-4">Welcome to the Website!</h1>
 
-<link rel="stylesheet" href="{% static 'website/style.css' %}"/>
-<p>Liczba spotkań {{a}}</p>
+<div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4">
+    <p>{{ message }}</p>
+</div>
 
-<ol>
-{% for meeting in meetings %}
-<li>
-    <a href="{% url 'detail' meeting.id %}"> {{ meeting.title }}</a>
-    
-</li>
-{% endfor %}
-</ol>
+<h3 class="text-gray-600 mt-4">Liczba spotkań: {{ num_meetings }}</h3>
 
+<h2 class="my-4 text-2xl font-semibold">Spotkania:</h2>
 
+<ul class="bg-white shadow rounded-lg divide-y divide-gray-200">
+    {% for meetings in meeting %}
+        <li>
+            <a href="{% url 'detail' meetings.id %}" class="block px-4 py-2 hover:bg-gray-100">
+                {{ meetings.id }}. {{ meetings.title }}
+            </a>
+        </li>
+    {% empty %}
+        <li class="px-4 py-2 text-gray-500">Brak dostępnych spotkań.</li>
+    {% endfor %}
+</ul>
+
+<div class="bg-white rounded shadow mt-4">
+    <div class="p-4">
+        <a href="{% url 'rooms' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Zobacz opis pokoi</a>
+    </div>
+</div>
+{% endblock %}
+{#// Copyright (c) 2024 Nicola Allocca all rights reserved.#}
