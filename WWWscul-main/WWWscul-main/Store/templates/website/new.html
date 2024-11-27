@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Rooms Page{% endblock %}
+
+{% block content %}
+
+    <h1>Planowanie nowego </h1>
+    <form method="post">
+        <table>
+            {{ form }}
+        </table>
+    {% csrf_token %}
+    <button type="submit">Dodaj</button>
+    </form>
+    <div class="bg-white rounded border">
+        <div class="p-5">
+            <a href="{% url 'welcome' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Powrót</a>
+        </div>
+    </div>
+{% endblock %}
+
+{#// Copyright (c) 2024 Nicola Allocca all rights reserved.#}

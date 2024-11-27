@@ -15,10 +15,10 @@
 <h2 class="my-4 text-2xl font-semibold">Spotkania:</h2>
 
 <ul class="bg-white shadow rounded-lg divide-y divide-gray-200">
-    {% for meetings in meeting %}
+    {% for meeting in meetings %}
         <li>
-            <a href="{% url 'detail' meetings.id %}" class="block px-4 py-2 hover:bg-gray-100">
-                {{ meetings.id }}. {{ meetings.title }}
+            <a href="{% url 'detail' meeting.id %}" class="block px-4 py-2 hover:bg-gray-100">
+                {{ meeting.id }}. {{ meeting.title }}
             </a>
         </li>
     {% empty %}
@@ -29,7 +29,11 @@
 <div class="bg-white rounded shadow mt-4">
     <div class="p-4">
         <a href="{% url 'rooms' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Zobacz opis pokoi</a>
+        <a href="{% url 'new' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Dodaj nowe spotkanie</a>
     </div>
 </div>
+    
 {% endblock %}
+
+
 {#// Copyright (c) 2024 Nicola Allocca all rights reserved.#}
