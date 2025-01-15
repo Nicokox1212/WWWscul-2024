@@ -1,12 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from GoodDoctor.models import Wizyta, Pacjent
+from .forms import WizytaForm
 
-# Widok listy wizyt
+
 def wizyty(request):
-    # Liczba wszystkich wizyt
-    liczba_wizyt = Wizyta.objects.count()
-    # Pobierz wszystkie wizyty
-    wszystkie_wizyty = Wizyta.objects.all()
+    liczba_wizyt = Wizyta.objects.count()  
+    wszystkie_wizyty = Wizyta.objects.all() 
     return render(
         request,
         "GoodDoctor/wizyta.html",
@@ -16,7 +15,6 @@ def wizyty(request):
         },
     )
 
-# Widok szczegółów pacjenta
 def details(request, id):
     details = get_object_or_404(Pacjent, pk=id)
     return render(
@@ -27,7 +25,6 @@ def details(request, id):
         },
     )
 
-# Widok listy pacjentów
 def pacjenci(request):
     all_pacjenci = Pacjent.objects.all()
     return render(
@@ -38,4 +35,19 @@ def pacjenci(request):
         },
     )
 
+
+
+
+def dodaj_wizyte(request):
+    from .models import Wizyta  # Import wewnątrz funkcji
+    from .forms import WizytaForm
+    if request.method == "POST":
+        form = WizytaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("wizyty")  # Przekierowanie na listę wizyt
+    else:
+        form = WizytaForm()
+
+    return render(request, "GoodDoctor/new.html", {"form": form})
 
