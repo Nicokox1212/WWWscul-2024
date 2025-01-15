@@ -1,6 +1,16 @@
-<h1>
-  Pacjent {{ details.imie }} {{ details.nazwisko }}
-</h1>
-<h2>Wiek: {{ details.wiek }}</h2>
-<h3>Zamieszkały w {{ details.miasto }}, ulica {{ details.ulica }}</h3>
+{% extends 'GoodDoctor/base.html' %}
+{% load static %}
 
+{% block title %}Szczegóły Pacjenta{% endblock %}
+
+{% block content %}
+<h1>Pacjent: {{ details.imie }} {{ details.nazwisko }}</h1>
+<h2>Wiek: {{ details.wiek }}</h2>
+<h3>Zamieszkały w: {{ details.miasto }}, ulica {{ details.ulica }}</h3>
+<h4>
+  <img src="{% static 'GoodDoctor/images/doctor.png' %}" 
+       alt="Doctor Image" 
+       style="max-width: 300px; margin-top: 10px;">
+</h4>
+
+{% endblock %}

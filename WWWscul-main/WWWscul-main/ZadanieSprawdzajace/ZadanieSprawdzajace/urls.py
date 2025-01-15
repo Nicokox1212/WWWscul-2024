@@ -17,10 +17,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from GoodDoctor.views import num_wizyt
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", num_wizyt),
-    path('GoodDoctor/', include('GoodDoctor.urls')),
+    path("", include("GoodDoctor.urls")),  # Wskazanie na `urls.py` aplikacji GoodDoctor
 ]

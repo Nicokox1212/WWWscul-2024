@@ -1,20 +1,22 @@
 from django.shortcuts import render, get_object_or_404
 from GoodDoctor.models import Wizyta, Pacjent
 
-
-def num_wizyt(request):
-    num_wizyt = Wizyta.objects.count()
-    all_wizyty = Wizyta.objects.all()
+# Widok listy wizyt
+def wizyty(request):
+    # Liczba wszystkich wizyt
+    liczba_wizyt = Wizyta.objects.count()
+    # Pobierz wszystkie wizyty
+    wszystkie_wizyty = Wizyta.objects.all()
     return render(
         request,
         "GoodDoctor/wizyta.html",
         {
-            "num_wizyt": num_wizyt,
-            "all_wizyty": all_wizyty,
+            "wizyty": liczba_wizyt,
+            "all_wizyty": wszystkie_wizyty,
         },
     )
 
-
+# Widok szczegółów pacjenta
 def details(request, id):
     details = get_object_or_404(Pacjent, pk=id)
     return render(
@@ -25,6 +27,7 @@ def details(request, id):
         },
     )
 
+# Widok listy pacjentów
 def pacjenci(request):
     all_pacjenci = Pacjent.objects.all()
     return render(
@@ -34,3 +37,5 @@ def pacjenci(request):
             "all_pacjenci": all_pacjenci,
         },
     )
+
+

@@ -1,14 +1,26 @@
-<h1>Good doctor</h1>
-<p>Masz umówione {{ num_wizyt }} wizyty</p>
+
+{% extends 'GoodDoctor/base.html' %}
+{% load static %}
+
+{% block title %}Lista Wizyt{% endblock %}
+
+{% block content %}
+<h1>Lista Wizyt</h1>
+<p>Masz umówione {{ num_wizyt }} wizyty:</p>
 <ul>
-  {% for wizyty in all_wizyty %}
-    <a href="{% url "details" wizyty.id %}">
-      <li>{{ wizyty.date }} {{ wizyty.pacjent.nazwisko }}</li>
-    </a>
-  {% empty %}
-  <li>Brak Pacjentów.</li>
-  {% endfor %}
+    {% for wizyta in all_wizyty %}
+        <li>
+            <a href="{% url 'details' wizyta.pacjent.id %}">
+                {{ wizyta.date }} - {{ wizyta.pacjent.imie }} {{ wizyta.pacjent.nazwisko }}
+            </a>
+            <br>
+            <img src="{% static 'GoodDoctor/images/doctor.png' %}" alt="Doctor Image" style="max-width: 100px; margin-top: 10px;">
+        </li>
+    {% empty %}
+        <li>Brak wizyt.</li>
+    {% endfor %}
 </ul>
-<a href="{% url "pacjenci" %}">
+<a href="{% url 'pacjenci' %}">
     <h2>Lista Twoich pacjentów</h2>
 </a>
+{% endblock %}
