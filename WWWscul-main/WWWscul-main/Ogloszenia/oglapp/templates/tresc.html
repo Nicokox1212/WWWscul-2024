@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Szczegóły ogłoszenia{% endblock %}
+
+{% block content %}
+<h1>{{ ogloszenie.tytul }}</h1>
+<p>{{ ogloszenie.tresc }}</p>
+<p><strong>Kategoria:</strong> {{ ogloszenie.kategoria }}</p>
+<p><strong>Autor:</strong> {{ ogloszenie.uzytkownik.imie }} {{ ogloszenie.uzytkownik.nazwisko }}</p>
+<p><strong>Email:</strong> {{ ogloszenie.uzytkownik.email }}</p>
+
+<a href="{% url 'index' %}">Powrót do strony głównej</a>
+{% endblock %}

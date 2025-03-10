@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista użytkowników{% endblock %}
+
+{% block content %}
+<h1>Lista użytkowników</h1>
+<ol>
+    {% for uzytkownik in uzytkownicy %}
+        <li>{{ uzytkownik.imie }} {{ uzytkownik.nazwisko }} - {{ uzytkownik.email }}</li>
+    {% endfor %}
+</ol>
+
+<a href="{% url 'index' %}">Powrót do strony głównej</a>
+{% endblock %}
