@@ -8,7 +8,7 @@ class Ryby(models.Model):
     styl_zycia = models.PositiveIntegerField()
 
     def __str__(self):
-        return self.nazwa
+        return f"{self.nazwa} , {self.wystepowanie}"
 
 class Okres_ochronny(models.Model):
     od_miesiaca = models.IntegerField()
