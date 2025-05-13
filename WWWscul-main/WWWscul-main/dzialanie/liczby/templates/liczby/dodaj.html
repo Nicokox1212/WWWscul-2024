@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <h1>Prosty kalkulator</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Oblicz</button>
+    </form>
+
+    {% if suma is not None %}
+        <p><strong>Suma:</strong> {{ suma }}</p>
+        <p><strong>Różnica:</strong> {{ roznica }}</p>
+        <p><strong>Iloczyn:</strong> {{ iloczyn }}</p>
+        <p><strong>Iloraz:</strong> {{ iloraz }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Farby</title>
+    <style>
+        body {
+            background-color: mediumpurple;
+        }
+        table {
+            border: 2px dotted plum;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>kolor</th>
+            <th>cena</th>
+            <th>pojemność</th>
+        </tr>
+        {% for farba in farby %}
+        <tr>
+            <td>{{ farba.kolor }}</td>
+            <td>{{ farba.cena }}</td>
+            <td>{{ farba.pojemnosc }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><br>
+    <form method="POST">
+        {% csrf_token %}
+        Powierzchnia malowania m²:
+        <input type="number" name="powierzchnia" value="{{ powierzchnia }}">
+        <button type="submit">Policz</button>
+    </form>
+
+    {% if potrzebne_puszki is not None %}
+        <p>Liczba potrzebnych puszek: <strong>{{ potrzebne_puszki }}</strong></p>
+    {% endif %}
+</body>
+</html>
